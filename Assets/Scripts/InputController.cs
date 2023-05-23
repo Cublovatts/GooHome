@@ -4,50 +4,50 @@ using UnityEngine;
 
 public class InputController : MonoBehaviour
 {
-    // Arrow
-    public Arrow arrow;
+    // Component references
+    Camera camera;
+
+    // Pointer
+    public GameObject start, end;
+    public bool isFixedLength = false;
+    public float fixedLength = 1f;
+    public float minLength = 0f, maxLength = 1f;
     public bool isInverted = false;
-    public float maxLength = 1f;
-    public float endWidth = 1f;
+
+    // Player
+    // public Player player;
+
+    // Arrow
+    // public Arrow arrow;
 
     void Start()
     {
-        
+        camera = Camera.main;
+
+        start.SetActive(false);
+        end.SetActive(false);
     }
 
     void Update()
     {
-        Vector2 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
         if (Input.GetMouseButtonDown(0))
         {
-            if(isInverted)
-            {
-                arrow.SetEnd(mousePos);
-            }
-            else
-            {
-                arrow.SetStart(mousePos);
-            }
-            
-            arrow.SetVisible(true);
+            start.transform.position = mousePos;
+            start.SetActive(true);
         }
 
         if (Input.GetMouseButton(0))
         {
-            if (isInverted)
-            {
-                arrow.SetStart(mousePos);
-            }
-            else
-            {
-                arrow.SetEnd(mousePos);
-            }
+            end.transform.position = mousePos;
+            end.SetActive(true);
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            arrow.SetVisible(false);
+            start.SetActive(false);
+            end.SetActive(false);
         }
     }
 }
