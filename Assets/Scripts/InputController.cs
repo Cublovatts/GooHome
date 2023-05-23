@@ -49,6 +49,9 @@ public class InputController : MonoBehaviour
             start.SetActive(false);
             end.SetActive(false);
 
+            // Jump uses normalized value at the moment, so jump force is constant
+            // We want to change this so jump force is directly proportional to magnitude
+            // Note: will need to clamp with minimum and maximum values
             player.Jump((isInverted ? -1 : 1) * (end.transform.position - start.transform.position).normalized * 10.0f);
         }
     }
