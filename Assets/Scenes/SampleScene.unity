@@ -1301,7 +1301,6 @@ MonoBehaviour:
   maxLength: 1
   isInverted: 0
   player: {fileID: 945568722}
-  arrow: {fileID: 870373413}
 --- !u!4 &1956986215
 Transform:
   m_ObjectHideFlags: 0

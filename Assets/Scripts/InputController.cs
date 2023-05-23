@@ -15,7 +15,7 @@ public class InputController : MonoBehaviour
     public bool isInverted = false;
 
     // Player
-    // public Player player;
+    public Player player;
 
     // Arrow
     // public Arrow arrow;
@@ -48,6 +48,8 @@ public class InputController : MonoBehaviour
         {
             start.SetActive(false);
             end.SetActive(false);
+
+            player.Jump((isInverted ? -1 : 1) * (end.transform.position - start.transform.position).normalized * 10.0f);
         }
     }
 }
