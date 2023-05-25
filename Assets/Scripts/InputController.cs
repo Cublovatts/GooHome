@@ -10,8 +10,8 @@ public class InputController : MonoBehaviour
     // Pointer
     public GameObject start, end;
     public bool isFixedLength = false;
-    public float fixedLength = 1f;
-    public float minLength = 0f, maxLength = float.MaxValue;
+    public float fixedLength = 2f;
+    public float minLength = 0f, maxLength = 10f;
     public bool isInverted = false;
 
     bool isDragging = false;

@@ -1661,9 +1661,9 @@ MonoBehaviour:
   start: {fileID: 1543465629}
   end: {fileID: 1195310755}
   isFixedLength: 0
-  fixedLength: 1
+  fixedLength: 2
   minLength: 0
-  maxLength: 2
+  maxLength: 10
   isInverted: 0
   player: {fileID: 945568722}
 --- !u!4 &1956986215
