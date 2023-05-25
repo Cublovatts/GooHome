@@ -11,7 +11,7 @@ public class InputController : MonoBehaviour
     public GameObject start, end;
     public bool isFixedLength = false;
     public float fixedLength = 1f;
-    public float minLength = 0f, maxLength = 1f;
+    public float minLength = 0f, maxLength = float.MaxValue;
     public bool isInverted = false;
 
     bool isDragging = false;
@@ -37,24 +37,35 @@ public class InputController : MonoBehaviour
 
         if (isDragging)
         {
+            start.transform.position = dragStart;
+            end.transform.position = dragEnd;
+
+            start.SetActive(true);
+            end.SetActive(true);
+
             Debug.DrawLine(dragStart, dragEnd, Color.white);
         }
 
         if (Input.GetMouseButtonDown(0))
         {
-            start.transform.position = mousePos;
-            start.SetActive(true);
-
             dragStart = mousePos;
             isDragging = true;
         }
 
         if (Input.GetMouseButton(0))
         {
-            end.transform.position = mousePos;
-            end.SetActive(true);
+            Vector2 dir = (mousePos - dragStart).normalized;
 
-            dragEnd = mousePos;
+            if (isFixedLength)
+            {
+                dragEnd = dragStart + fixedLength * dir;
+            }
+            else
+            {
+                float length = (mousePos - dragStart).magnitude;
+                length = Mathf.Clamp(length, minLength, maxLength);
+                dragEnd = dragStart + length * dir;
+            }
         }
 
         if (Input.GetMouseButtonUp(0))
