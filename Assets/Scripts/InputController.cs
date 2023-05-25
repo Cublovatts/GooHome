@@ -87,7 +87,9 @@ public class InputController : MonoBehaviour
     {
         if (isDragging && showOnScreen)
         {
-            Vector2 labelPos = new Vector2(10, 10); // Replace with middle of drag position
+            Vector2 labelPos = dragStart + 0.5f * (dragEnd - dragStart);
+            labelPos = camera.WorldToScreenPoint(labelPos);
+            labelPos.y = Screen.height - labelPos.y;
             GUI.Label(new Rect(labelPos.x, labelPos.y, 100, 20), string.Format("d={0:N2}", Mathf.Abs((dragEnd - dragStart).magnitude)));
         }
     }
