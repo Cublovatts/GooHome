@@ -8,6 +8,7 @@ public class InputController : MonoBehaviour
     Camera camera;
 
     // Pointer
+    public bool showOnScreen = true;
     public GameObject start, end;
     public bool isFixedLength = false;
     public float fixedLength = 2f;
@@ -35,7 +36,7 @@ public class InputController : MonoBehaviour
     {
         Vector2 mousePos = camera.ScreenToWorldPoint(Input.mousePosition);
 
-        if (isDragging)
+        if (isDragging && showOnScreen)
         {
             start.transform.position = dragStart;
             end.transform.position = dragEnd;
@@ -78,13 +79,13 @@ public class InputController : MonoBehaviour
             // Jump uses normalized value at the moment, so jump force is constant
             // We want to change this so jump force is directly proportional to magnitude
             // Note: will need to clamp with minimum and maximum values
-            player.Jump((isInverted ? -1 : 1) * (end.transform.position - start.transform.position).normalized * 10.0f);
+            player.Jump((isInverted ? -1 : 1) * (dragEnd - dragStart).normalized * 10.0f);
         }
     }
 
     private void OnGUI()
     {
-        if (isDragging)
+        if (isDragging && showOnScreen)
         {
             Vector2 labelPos = new Vector2(10, 10); // Replace with middle of drag position
             GUI.Label(new Rect(labelPos.x, labelPos.y, 100, 20), string.Format("d={0:N2}", Mathf.Abs((dragEnd - dragStart).magnitude)));
