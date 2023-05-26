@@ -8,12 +8,16 @@ public class InputController : MonoBehaviour
     Camera camera;
 
     // Pointer
-    public bool showOnScreen = true;
     public GameObject start, end;
+    public GameObject pointer;
+
+    public bool showOnScreen = true;
     public bool isFixedLength = false;
     public float fixedLength = 2f;
     public float minLength = 0f, maxLength = 10f;
     public bool isInverted = false;
+
+    public float force = 1f;
 
     bool isDragging = false;
     Vector2 dragStart, dragEnd;
@@ -28,8 +32,7 @@ public class InputController : MonoBehaviour
     {
         camera = Camera.main;
 
-        start.SetActive(false);
-        end.SetActive(false);
+        pointer.SetActive(false);
     }
 
     void Update()
@@ -41,8 +44,7 @@ public class InputController : MonoBehaviour
             start.transform.position = dragStart;
             end.transform.position = dragEnd;
 
-            start.SetActive(true);
-            end.SetActive(true);
+            pointer.SetActive(true);
 
             Debug.DrawLine(dragStart, dragEnd, Color.white);
         }
@@ -71,15 +73,14 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            start.SetActive(false);
-            end.SetActive(false);
+            pointer.SetActive(false);
 
             isDragging = false;
 
             // Jump uses normalized value at the moment, so jump force is constant
             // We want to change this so jump force is directly proportional to magnitude
             // Note: will need to clamp with minimum and maximum values
-            player.Jump((isInverted ? -1 : 1) * (dragEnd - dragStart).normalized * 10.0f);
+            player.Jump((isInverted ? -1 : 1) * (dragEnd - dragStart) * force);
         }
     }
 
