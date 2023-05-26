@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        // TODO: Check for different collider types
+        // E.g. if (collider is sticky)
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 }
