@@ -43,9 +43,7 @@ public class InputController : MonoBehaviour
         {
             start.transform.position = dragStart;
             end.transform.position = dragEnd;
-
             pointer.SetActive(true);
-
             Debug.DrawLine(dragStart, dragEnd, Color.white);
         }
 
@@ -74,12 +72,7 @@ public class InputController : MonoBehaviour
         if (Input.GetMouseButtonUp(0))
         {
             pointer.SetActive(false);
-
             isDragging = false;
-
-            // Jump uses normalized value at the moment, so jump force is constant
-            // We want to change this so jump force is directly proportional to magnitude
-            // Note: will need to clamp with minimum and maximum values
             player.Jump((isInverted ? -1 : 1) * (dragEnd - dragStart) * force);
         }
     }
