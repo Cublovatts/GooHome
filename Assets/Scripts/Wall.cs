@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum WALL_TYPE { normal, sticky, slippy }
+public enum WALL_TYPE { normal, sticky, slippy, bouncy }
 
 public class Wall : MonoBehaviour
 {
