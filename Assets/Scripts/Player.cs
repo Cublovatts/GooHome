@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     {
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
-            //rb.constraints = RigidbodyConstraints2D.None;
+            rb.constraints = RigidbodyConstraints2D.None;
             rb.AddForce(dir, ForceMode2D.Impulse);
             // hasJumped = true;
         }
