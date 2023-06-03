@@ -33,7 +33,7 @@ public class Player : MonoBehaviour
     {
         // TODO: Check for different collider types
         // E.g. if (collider is sticky)
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        //rb.constraints = RigidbodyConstraints2D.FreezeAll;
         isMidair = false;
     }
 
