@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     bool isMidair = true; // prefer hasJumped or canJump?
 
+    public SaveData data;
+    public Transform spawn;
+
     public void Jump(Vector2 dir)
     {
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
@@ -45,5 +48,17 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isMidair = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Out of Bounds")
+        {
+            data.deaths += 1;
+
+            transform.position = spawn.position;
+            rb.velocity = Vector2.zero;
+            rb.angularVelocity = 0f;
+        }
     }
 }
