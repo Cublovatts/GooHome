@@ -10,7 +10,8 @@ public class Player : MonoBehaviour
     bool isMidair = true; // prefer hasJumped or canJump?
 
     public SaveData data;
-    public Transform spawn;
+    public Transform checkpoints;
+    public int checkpointIndex = 0;
 
     public void Jump(Vector2 dir)
     {
@@ -56,7 +57,7 @@ public class Player : MonoBehaviour
         {
             data.deaths += 1;
 
-            transform.position = spawn.position;
+            transform.position = checkpoints.GetChild(checkpointIndex).position;
             rb.velocity = Vector2.zero;
             rb.angularVelocity = 0f;
         }
