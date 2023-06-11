@@ -6,4 +6,5 @@ using UnityEngine;
 public class SaveData : ScriptableObject
 {
     public int deaths = 0;
+    public int lastCheckpoint = 0;
 }

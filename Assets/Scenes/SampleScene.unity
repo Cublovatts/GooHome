@@ -849,9 +849,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 849360568}
+  - component: {fileID: 849360569}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Spawn Point
+  m_TagString: Checkpoint
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -870,6 +871,22 @@ Transform:
   m_Father: {fileID: 399932106}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &849360569
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849360567}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &900523041
 GameObject:
   m_ObjectHideFlags: 0
@@ -1318,9 +1335,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1263932341}
+  - component: {fileID: 1263932342}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Spawn Point
+  m_TagString: Checkpoint
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1339,6 +1357,22 @@ Transform:
   m_Father: {fileID: 399932106}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1263932342
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1263932340}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &1407451221
 GameObject:
   m_ObjectHideFlags: 0
@@ -1969,9 +2003,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1911954215}
+  - component: {fileID: 1911954216}
   m_Layer: 0
   m_Name: Checkpoint
-  m_TagString: Spawn Point
+  m_TagString: Checkpoint
   m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1990,6 +2025,22 @@ Transform:
   m_Father: {fileID: 399932106}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1911954216
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1911954214}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &2129764055
 GameObject:
   m_ObjectHideFlags: 0

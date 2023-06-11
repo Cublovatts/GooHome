@@ -11,7 +11,6 @@ public class Player : MonoBehaviour
 
     public SaveData data;
     public Transform checkpoints;
-    public int checkpointIndex = 0;
 
     public void Jump(Vector2 dir)
     {
@@ -53,13 +52,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Out of Bounds")
+        switch (collision.tag)
         {
-            data.deaths += 1;
+            case "Out of Bounds":
+                data.deaths += 1;
+                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                break;
 
-            transform.position = checkpoints.GetChild(checkpointIndex).position;
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            case "Checkpoint":
+                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                break;
+
         }
     }
 }
