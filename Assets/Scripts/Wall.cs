@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public enum WALL_TYPE { normal, sticky, slippy, bouncy }
@@ -22,14 +20,14 @@ public class Wall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Rigidbody2D rb;
-        bool hasRb = collision.gameObject.TryGetComponent<Rigidbody2D>(out rb);
+        Player player;
+        bool isPlayer = collision.gameObject.TryGetComponent<Player>(out player);
 
         switch (type)
         {
             case WALL_TYPE.sticky:
-                if(hasRb)
-                    rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                if (isPlayer)
+                    player.Stick(gameObject);
                 break;
 
             case WALL_TYPE.slippy:

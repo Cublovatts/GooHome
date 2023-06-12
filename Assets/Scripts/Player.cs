@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 
     public void Jump(Vector2 dir)
     {
+        gameObject.transform.parent = null;
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
@@ -19,9 +20,14 @@ public class Player : MonoBehaviour
         }
     }
 
-    void Start()
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+    }
+
+    void Start()
+    {
+        
     }
 
     void Update()
@@ -45,5 +51,11 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isMidair = true;
+    }
+
+    public void Stick(GameObject toStickOn)
+    {
+        gameObject.transform.SetParent(toStickOn.transform);
+        rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
 }
