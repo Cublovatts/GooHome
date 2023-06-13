@@ -205,6 +205,7 @@ GameObject:
   - component: {fileID: 216562990}
   - component: {fileID: 216562989}
   - component: {fileID: 216562992}
+  - component: {fileID: 216562993}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -324,6 +325,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &216562993
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 216562988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &399735303
 GameObject:
   m_ObjectHideFlags: 0
@@ -336,6 +350,7 @@ GameObject:
   - component: {fileID: 399735305}
   - component: {fileID: 399735304}
   - component: {fileID: 399735307}
+  - component: {fileID: 399735308}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -940,6 +955,7 @@ GameObject:
   - component: {fileID: 1070825036}
   - component: {fileID: 1070825035}
   - component: {fileID: 1070825037}
+  - component: {fileID: 1070825038}
   m_Layer: 0
   m_Name: Platform (1)
   m_TagString: Untagged
@@ -1059,6 +1075,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1070825038
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1070825033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1124013486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1100,7 @@ GameObject:
   - component: {fileID: 1124013488}
   - component: {fileID: 1124013487}
   - component: {fileID: 1124013490}
+  - component: {fileID: 1124013491}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -1190,6 +1220,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1124013491
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1124013486}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1166582544
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1245,7 @@ GameObject:
   - component: {fileID: 1166582547}
   - component: {fileID: 1166582546}
   - component: {fileID: 1166582548}
+  - component: {fileID: 1166582549}
   m_Layer: 0
   m_Name: Platform (3)
   m_TagString: Untagged
@@ -1321,6 +1365,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1166582549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1166582544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1195310755 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6917816012204017196, guid: 740888e44f801374a9db2f08b47ff8e2, type: 3}
@@ -1608,6 +1665,7 @@ GameObject:
   - component: {fileID: 1550134100}
   - component: {fileID: 1550134099}
   - component: {fileID: 1550134102}
+  - component: {fileID: 1550134103}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged
@@ -1727,6 +1785,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1550134103
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550134098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1682064556
 GameObject:
   m_ObjectHideFlags: 0
@@ -1739,6 +1810,7 @@ GameObject:
   - component: {fileID: 1682064559}
   - component: {fileID: 1682064558}
   - component: {fileID: 1682064560}
+  - component: {fileID: 1682064561}
   m_Layer: 0
   m_Name: Platform (2)
   m_TagString: Untagged
@@ -1858,6 +1930,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &1682064561
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682064556}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82847904b5b93c2478daa421c0acbc1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
 --- !u!1 &1708257715 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6917816012758911292, guid: 740888e44f801374a9db2f08b47ff8e2, type: 3}
@@ -1976,6 +2061,7 @@ GameObject:
   - component: {fileID: 1826817575}
   - component: {fileID: 1826817574}
   - component: {fileID: 1826817577}
+  - component: {fileID: 1826817578}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Untagged

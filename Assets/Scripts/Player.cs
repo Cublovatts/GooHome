@@ -9,18 +9,31 @@ public class Player : MonoBehaviour
     private Rigidbody2D rb;
     private AudioSource _audioSource;
     public bool canJumpMidair = false;
+
     [SerializeField]
     bool isMidair = true; // prefer hasJumped or canJump?
+    [SerializeField]
+    private float _maxStoredVelocity;
+    [SerializeField] 
+    private float _minStoredVelocity;
+    [SerializeField]
+    private float _storedVelocityDegradeRate;
+    Rigidbody2D rb;
+
+    [SerializeField]
+    private float _storedVelocity;
 
     public SaveData data;
     public Transform checkpoints;
 
     public void Jump(Vector2 dir)
     {
+        gameObject.transform.parent = null;
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(dir, ForceMode2D.Impulse);
+            rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
+            _storedVelocity = 0.0f;
             transform.SetParent(null);
         }
     }
@@ -33,15 +46,25 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        _storedVelocity = _minStoredVelocity;
     }
 
-    void Update()
+    void Start()
     {
         
     }
 
+    void Update()
+    {
+        _storedVelocity -= _storedVelocityDegradeRate * Time.deltaTime;
+        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        _storedVelocity = rb.velocity.magnitude;
+        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+    
         // TODO: Check for different collider types
         // E.g. if (collider is sticky)
         //rb.constraints = RigidbodyConstraints2D.FreezeAll;
