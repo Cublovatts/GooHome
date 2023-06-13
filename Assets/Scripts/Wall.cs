@@ -28,8 +28,11 @@ public class Wall : MonoBehaviour
         switch (type)
         {
             case WALL_TYPE.sticky:
-                if(hasRb)
-                    rb.constraints = RigidbodyConstraints2D.FreezePosition;
+                if (hasRb)
+                {
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    rb.transform.SetParent(transform);
+                }
                 break;
 
             case WALL_TYPE.slippy:

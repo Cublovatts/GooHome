@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.AddForce(dir, ForceMode2D.Impulse);
-            // hasJumped = true;
+            transform.SetParent(null);
         }
     }
 
