@@ -20,14 +20,17 @@ public class Wall : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Player player;
-        bool isPlayer = collision.gameObject.TryGetComponent<Player>(out player);
+        Rigidbody2D rb;
+        bool hasRb = collision.gameObject.TryGetComponent<Rigidbody2D>(out rb);
 
         switch (type)
         {
             case WALL_TYPE.sticky:
-                if (isPlayer)
-                    player.Stick(gameObject);
+                if (hasRb)
+                {
+                    rb.constraints = RigidbodyConstraints2D.FreezeAll;
+                    rb.transform.SetParent(transform);
+                }
                 break;
 
             case WALL_TYPE.slippy:

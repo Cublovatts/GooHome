@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    [SerializeField]
+    private AudioClip _landingSoundEffect;
+    private Rigidbody2D rb;
+    private AudioSource _audioSource;
     public bool canJumpMidair = false;
 
     [SerializeField]
@@ -19,6 +23,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _storedVelocity;
 
+    public SaveData data;
+    public Transform checkpoints;
+
     public void Jump(Vector2 dir)
     {
         gameObject.transform.parent = null;
@@ -27,11 +34,16 @@ public class Player : MonoBehaviour
             rb.constraints = RigidbodyConstraints2D.None;
             rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
             _storedVelocity = 0.0f;
-            // hasJumped = true;
+            transform.SetParent(null);
         }
     }
 
     private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+    }
+
+    void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         _storedVelocity = _minStoredVelocity;
@@ -50,10 +62,14 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        _storedVelocity = rb.velocity.magnitude;
+        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+    
         // TODO: Check for different collider types
         // E.g. if (collider is sticky)
         //rb.constraints = RigidbodyConstraints2D.FreezeAll;
         isMidair = false;
+        _audioSource.PlayOneShot(_landingSoundEffect);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
@@ -66,12 +82,21 @@ public class Player : MonoBehaviour
         isMidair = true;
     }
 
-    public void Stick(GameObject toStickOn)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        _storedVelocity = rb.velocity.magnitude;
-        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+        switch (collision.tag)
+        {
+            case "Out of Bounds":
+                data.deaths += 1;
+                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                break;
 
-        gameObject.transform.SetParent(toStickOn.transform);
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
+            case "Checkpoint":
+                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                break;
+
+        }
     }
 }
