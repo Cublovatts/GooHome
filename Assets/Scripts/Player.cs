@@ -4,10 +4,20 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
     public bool canJumpMidair = false;
+
     [SerializeField]
     bool isMidair = true; // prefer hasJumped or canJump?
+    [SerializeField]
+    private float _maxStoredVelocity;
+    [SerializeField] 
+    private float _minStoredVelocity;
+    [SerializeField]
+    private float _storedVelocityDegradeRate;
+    Rigidbody2D rb;
+
+    [SerializeField]
+    private float _storedVelocity;
 
     public void Jump(Vector2 dir)
     {
@@ -15,7 +25,8 @@ public class Player : MonoBehaviour
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(dir, ForceMode2D.Impulse);
+            rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
+            _storedVelocity = 0.0f;
             // hasJumped = true;
         }
     }
@@ -23,6 +34,7 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        _storedVelocity = _minStoredVelocity;
     }
 
     void Start()
@@ -32,7 +44,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        
+        _storedVelocity -= _storedVelocityDegradeRate * Time.deltaTime;
+        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,6 +68,9 @@ public class Player : MonoBehaviour
 
     public void Stick(GameObject toStickOn)
     {
+        _storedVelocity = rb.velocity.magnitude;
+        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+
         gameObject.transform.SetParent(toStickOn.transform);
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
     }
