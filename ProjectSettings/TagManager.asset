@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Collectible
   - Out of Bounds
-  - Spawn Point
+  - Checkpoint
   layers:
   - Default
   - TransparentFX

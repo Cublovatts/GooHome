@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
     bool isMidair = true; // prefer hasJumped or canJump?
 
     public SaveData data;
-    public Transform spawn;
+    public Transform checkpoints;
 
     public void Jump(Vector2 dir)
     {
@@ -52,13 +52,19 @@ public class Player : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Out of Bounds")
+        switch (collision.tag)
         {
-            data.deaths += 1;
+            case "Out of Bounds":
+                data.deaths += 1;
+                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                break;
 
-            transform.position = spawn.position;
-            rb.velocity = Vector2.zero;
-            rb.angularVelocity = 0f;
+            case "Checkpoint":
+                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                break;
+
         }
     }
 }
