@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    Rigidbody2D rb;
+    [SerializeField]
+    private AudioClip _landingSoundEffect;
+    private Rigidbody2D rb;
+    private AudioSource _audioSource;
     public bool canJumpMidair = false;
     [SerializeField]
     bool isMidair = true; // prefer hasJumped or canJump?
@@ -20,6 +23,11 @@ public class Player : MonoBehaviour
             rb.AddForce(dir, ForceMode2D.Impulse);
             transform.SetParent(null);
         }
+    }
+
+    private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
     }
 
     void Start()
@@ -38,6 +46,7 @@ public class Player : MonoBehaviour
         // E.g. if (collider is sticky)
         //rb.constraints = RigidbodyConstraints2D.FreezeAll;
         isMidair = false;
+        _audioSource.PlayOneShot(_landingSoundEffect);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
