@@ -12,13 +12,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     bool isMidair = true; // prefer hasJumped or canJump?
 
+    public SaveData data;
+    public Transform checkpoints;
+
     public void Jump(Vector2 dir)
     {
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.AddForce(dir, ForceMode2D.Impulse);
-            // hasJumped = true;
+            transform.SetParent(null);
         }
     }
 
@@ -54,5 +57,23 @@ public class Player : MonoBehaviour
     private void OnCollisionExit2D(Collision2D collision)
     {
         isMidair = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        switch (collision.tag)
+        {
+            case "Out of Bounds":
+                data.deaths += 1;
+                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
+                rb.velocity = Vector2.zero;
+                rb.angularVelocity = 0f;
+                break;
+
+            case "Checkpoint":
+                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                break;
+
+        }
     }
 }
