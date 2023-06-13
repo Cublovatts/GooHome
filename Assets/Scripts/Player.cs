@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     private float _minStoredVelocity;
     [SerializeField]
     private float _storedVelocityDegradeRate;
-    Rigidbody2D rb;
 
     [SerializeField]
     private float _storedVelocity;
@@ -47,11 +46,6 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         _storedVelocity = _minStoredVelocity;
-    }
-
-    void Start()
-    {
-        
     }
 
     void Update()
