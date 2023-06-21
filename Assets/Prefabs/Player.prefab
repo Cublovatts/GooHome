@@ -565,7 +565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2490fac778ca24db00a45bacd54d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _landingSoundEffect: {fileID: 0}
+  _landingSoundEffect: {fileID: 8300000, guid: f06c25931e1c0df469e260990aef6844, type: 3}
   canJumpMidair: 0
   isMidair: 1
   _maxStoredVelocity: 1
@@ -798,7 +798,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: d71fa1ab5a008b04098eb85872e264af, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
