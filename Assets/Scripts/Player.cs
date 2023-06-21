@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 
     public SaveData data;
     public Transform checkpoints;
+    public InputController controller;
 
     public void Jump(Vector2 dir)
     {
