@@ -11,7 +11,10 @@ public class Player : MonoBehaviour
     private AudioClip _landingSoundEffect;
     [FormerlySerializedAs("isMidair")]
     [SerializeField]
-    bool _isMidair = true;
+
+    public SaveData data;
+    public Transform checkpoints;
+    public InputController controller;
 
     private Rigidbody2D _rigidBody;
     private AudioSource _audioSource;
