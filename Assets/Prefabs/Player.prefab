@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8640975570566410101}
   - component: {fileID: 8640975570566410103}
   - component: {fileID: 8640975570566410100}
+  - component: {fileID: 5095179855703076609}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -46,8 +47,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf2490fac778ca24db00a45bacd54d08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _landingSoundEffect: {fileID: 0}
   canJumpMidair: 0
   isMidair: 1
+  _maxStoredVelocity: 0
+  _minStoredVelocity: 0
+  _storedVelocityDegradeRate: 0
+  _storedVelocity: 0
+  data: {fileID: 0}
+  checkpoints: {fileID: 0}
+  contactPoint: {fileID: 0}
 --- !u!50 &8640975570566410100
 Rigidbody2D:
   serializedVersion: 4
@@ -69,6 +78,32 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!1773428102 &5095179855703076609
+ParentConstraint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8640975570566410090}
+  m_Enabled: 1
+  m_Weight: 1
+  m_TranslationAtRest: {x: -4.17, y: -2.43, z: 0}
+  m_RotationAtRest: {x: 0, y: 0, z: 0}
+  m_TranslationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_RotationOffsets:
+  - {x: 0, y: 0, z: 0}
+  m_AffectTranslationX: 1
+  m_AffectTranslationY: 1
+  m_AffectTranslationZ: 1
+  m_AffectRotationX: 1
+  m_AffectRotationY: 1
+  m_AffectRotationZ: 1
+  m_IsContraintActive: 0
+  m_IsLocked: 0
+  m_Sources:
+  - sourceTransform: {fileID: 0}
+    weight: 1
 --- !u!1 &8640975570756996225
 GameObject:
   m_ObjectHideFlags: 0

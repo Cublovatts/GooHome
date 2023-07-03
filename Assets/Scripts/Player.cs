@@ -12,7 +12,8 @@ public class Player : MonoBehaviour
     public bool canJumpMidair = false;
 
     [SerializeField]
-    bool isMidair = true; // prefer hasJumped or canJump?
+    bool isMidair = true; // TODO: change to isGrounded
+    // TODO: add isSticking
     [SerializeField]
     private float _maxStoredVelocity;
     [SerializeField] 
@@ -31,13 +32,12 @@ public class Player : MonoBehaviour
 
     public void Jump(Vector2 dir)
     {
-        // gameObject.transform.parent = null;
         if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
         {
             rb.constraints = RigidbodyConstraints2D.None;
             rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
             _storedVelocity = 0.0f;
-            // transform.SetParent(null);
+
             pc.constraintActive = false;
             contactPoint.rotation = Quaternion.identity;
         }
@@ -80,7 +80,6 @@ public class Player : MonoBehaviour
 
         pc.SetTranslationOffset(0, new Vector2(transform.position.x - contactPoint.position.x, transform.position.y - contactPoint.position.y));
         pc.SetRotationOffset(0, new Vector2(transform.position.x - contactPoint.position.x, transform.position.y - contactPoint.position.y));
-        //pc.translationOffset = new Vector2(transform.position.x - contactPoint.position.x, transform.position.y - contactPoint.position.y);
         pc.constraintActive = true;
 
         rb.constraints = RigidbodyConstraints2D.FreezeAll;
