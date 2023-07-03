@@ -1,38 +1,31 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
+    public SaveData Data;
+    public Transform Checkpoints;
+    public bool CanJumpMidair = false;
+
     [SerializeField]
     private AudioClip _landingSoundEffect;
-    private Rigidbody2D rb;
-    private AudioSource _audioSource;
-    public bool canJumpMidair = false;
-
+    [FormerlySerializedAs("isMidair")]
     [SerializeField]
-    bool isMidair = true; // prefer hasJumped or canJump?
-    [SerializeField]
-    private float _maxStoredVelocity;
-    [SerializeField] 
-    private float _minStoredVelocity;
-    [SerializeField]
-    private float _storedVelocityDegradeRate;
-
-    [SerializeField]
-    private float _storedVelocity;
 
     public SaveData data;
     public Transform checkpoints;
+    public InputController controller;
 
+    private Rigidbody2D _rigidBody;
+    private AudioSource _audioSource;
+    
     public void Jump(Vector2 dir)
     {
         gameObject.transform.parent = null;
-        if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
+        if (CanJumpMidair || !_isMidair || _rigidBody.velocity.magnitude == 0)
         {
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
-            _storedVelocity = 0.0f;
+            _rigidBody.constraints = RigidbodyConstraints2D.None;
+            _rigidBody.AddForce(dir , ForceMode2D.Impulse);
             transform.SetParent(null);
         }
     }
@@ -44,36 +37,23 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
-        _storedVelocity = _minStoredVelocity;
-    }
-
-    void Update()
-    {
-        _storedVelocity -= _storedVelocityDegradeRate * Time.deltaTime;
-        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _storedVelocity = rb.velocity.magnitude;
-        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
-    
-        // TODO: Check for different collider types
-        // E.g. if (collider is sticky)
-        //rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        isMidair = false;
+        _isMidair = false;
         _audioSource.PlayOneShot(_landingSoundEffect);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        isMidair = false;
+        _isMidair = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isMidair = true;
+        _isMidair = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -81,14 +61,14 @@ public class Player : MonoBehaviour
         switch (collision.tag)
         {
             case "Out of Bounds":
-                data.deaths += 1;
-                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
-                rb.velocity = Vector2.zero;
-                rb.angularVelocity = 0f;
+                Data.deaths += 1;
+                transform.position = Checkpoints.GetChild(Data.lastCheckpoint).position;
+                _rigidBody.velocity = Vector2.zero;
+                _rigidBody.angularVelocity = 0f;
                 break;
 
             case "Checkpoint":
-                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                Data.lastCheckpoint = collision.transform.GetSiblingIndex();
                 break;
 
         }
