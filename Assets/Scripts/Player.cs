@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Animations;
+using UnityEngine.Serialization;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField]
-    private AudioClip _landingSoundEffect;
-    private Rigidbody2D rb;
-    private AudioSource _audioSource;
-    public bool canJumpMidair = false;
+    public SaveData Data;
+    public Transform Checkpoints;
+    public bool CanJumpMidair = false;
 
     [SerializeField]
     bool isMidair = true; // TODO: change to isGrounded
@@ -21,11 +18,16 @@ public class Player : MonoBehaviour
     [SerializeField]
     private float _storedVelocityDegradeRate;
 
+    private AudioClip _landingSoundEffect;
+    [FormerlySerializedAs("isMidair")]
     [SerializeField]
-    private float _storedVelocity;
 
     public SaveData data;
     public Transform checkpoints;
+    public InputController controller;
+    
+    private Rigidbody2D _rigidBody;
+    private AudioSource _audioSource;
 
     public Transform contactPoint;
     ParentConstraint pc;
@@ -62,17 +64,13 @@ public class Player : MonoBehaviour
         _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
 
         transform.rotation = new Quaternion(0, 0, 0, 0);
+
+        _rigidBody = GetComponent<Rigidbody2D>();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _storedVelocity = rb.velocity.magnitude;
-        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
-    
-        // TODO: Check for different collider types
-        // E.g. if (collider is sticky)
-        //rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        isMidair = false;
+        _isMidair = false;
         _audioSource.PlayOneShot(_landingSoundEffect);
 
         contactPoint.transform.position = collision.GetContact(0).point;
@@ -88,12 +86,12 @@ public class Player : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        isMidair = false;
+        _isMidair = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        isMidair = true;
+        _isMidair = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -101,14 +99,14 @@ public class Player : MonoBehaviour
         switch (collision.tag)
         {
             case "Out of Bounds":
-                data.deaths += 1;
-                transform.position = checkpoints.GetChild(data.lastCheckpoint).position;
-                rb.velocity = Vector2.zero;
-                rb.angularVelocity = 0f;
+                Data.deaths += 1;
+                transform.position = Checkpoints.GetChild(Data.lastCheckpoint).position;
+                _rigidBody.velocity = Vector2.zero;
+                _rigidBody.angularVelocity = 0f;
                 break;
 
             case "Checkpoint":
-                data.lastCheckpoint = collision.transform.GetSiblingIndex();
+                Data.lastCheckpoint = collision.transform.GetSiblingIndex();
                 break;
 
         }

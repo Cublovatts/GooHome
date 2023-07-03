@@ -16,6 +16,7 @@ public class InputController : MonoBehaviour
     public float fixedLength = 2f;
     public float minLength = 0f, maxLength = 10f;
     public bool isInverted = false;
+    public Vector2 dir;
 
     public float force = 1f;
 
@@ -55,7 +56,7 @@ public class InputController : MonoBehaviour
 
         if (Input.GetMouseButton(0))
         {
-            Vector2 dir = (mousePos - dragStart).normalized;
+            dir = (mousePos - dragStart).normalized;
 
             if (isFixedLength)
             {
@@ -86,5 +87,10 @@ public class InputController : MonoBehaviour
             labelPos.y = Screen.height - labelPos.y;
             GUI.Label(new Rect(labelPos.x, labelPos.y, 100, 20), string.Format("d={0:N2}", Mathf.Abs((dragEnd - dragStart).magnitude)));
         }
+    }
+
+    public bool IsDragging()
+    {
+        return isDragging;
     }
 }
