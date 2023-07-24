@@ -34,11 +34,10 @@ public class Player : MonoBehaviour
 
     public void Jump(Vector2 dir)
     {
-        if (canJumpMidair || !isMidair || rb.velocity.magnitude == 0)
+        if (CanJumpMidair || !isMidair || _rigidBody.velocity.magnitude == 0)
         {
-            rb.constraints = RigidbodyConstraints2D.None;
-            rb.AddForce(dir * _storedVelocity, ForceMode2D.Impulse);
-            _storedVelocity = 0.0f;
+            _rigidBody.constraints = RigidbodyConstraints2D.None;
+            _rigidBody.AddForce(dir, ForceMode2D.Impulse);
 
             pc.constraintActive = false;
             contactPoint.rotation = Quaternion.identity;
@@ -52,17 +51,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        _rigidBody = GetComponent<Rigidbody2D>();
         pc = GetComponent<ParentConstraint>();
-
-        _storedVelocity = _minStoredVelocity;
     }
 
     void Update()
     {
-        _storedVelocity -= _storedVelocityDegradeRate * Time.deltaTime;
-        _storedVelocity = Mathf.Clamp(_storedVelocity, _minStoredVelocity, _maxStoredVelocity);
-
         transform.rotation = new Quaternion(0, 0, 0, 0);
 
         _rigidBody = GetComponent<Rigidbody2D>();
@@ -70,7 +64,7 @@ public class Player : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        _isMidair = false;
+        isMidair = false;
         _audioSource.PlayOneShot(_landingSoundEffect);
 
         contactPoint.transform.position = collision.GetContact(0).point;
@@ -80,18 +74,18 @@ public class Player : MonoBehaviour
         pc.SetRotationOffset(0, new Vector2(transform.position.x - contactPoint.position.x, transform.position.y - contactPoint.position.y));
         pc.constraintActive = true;
 
-        rb.constraints = RigidbodyConstraints2D.FreezeAll;
-        rb.transform.SetParent(transform);
+        _rigidBody.constraints = RigidbodyConstraints2D.FreezeAll;
+        _rigidBody.transform.SetParent(transform);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        _isMidair = false;
+        isMidair = false;
     }
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        _isMidair = true;
+        isMidair = true;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

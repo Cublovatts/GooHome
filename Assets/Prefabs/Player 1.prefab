@@ -111,6 +111,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3412558755169663405, guid: 976d1a7261b75644ba659efd9eb17ab0, type: 3}
   m_PrefabInstance: {fileID: 456967552567707010}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2957916669850483758 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3412558755169663404, guid: 976d1a7261b75644ba659efd9eb17ab0, type: 3}
+  m_PrefabInstance: {fileID: 456967552567707010}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5ba4510809fa274bb4bd166769a57b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5264044447293848007
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -251,6 +262,10 @@ PrefabInstance:
       propertyPath: spawn
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8640975570566410103, guid: 7bbc6980d55934746aa6dba49b82bce5, type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2957916669850483758}
     - target: {fileID: 8640975570566410103, guid: 7bbc6980d55934746aa6dba49b82bce5, type: 3}
       propertyPath: checkpoints
       value: 

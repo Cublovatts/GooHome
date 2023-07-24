@@ -18,7 +18,6 @@ public class Pupil : MonoBehaviour
         _controller = Player.controller;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (_controller.IsDragging())
