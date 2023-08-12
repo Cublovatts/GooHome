@@ -4,16 +4,157 @@ TextureImporter:
   internalIDToNameTable:
   - first:
       213: -1223380547400649768
-    second: test_spritesheet_0
+    second: player
   - first:
       213: -5152207037463767643
-    second: test_spritesheet_1
+    second: platform_full
   - first:
       213: 2489410512950625930
-    second: test_spritesheet_2
+    second: platform_half
   - first:
       213: -398742695661604349
-    second: test_spritesheet_3
+    second: acid_wave
+  - first:
+      213: 4868345518725767247
+    second: collectible
+  - first:
+      213: -7108125272364356983
+    second: start
+  - first:
+      213: 2331932688906716316
+    second: end
+  - first:
+      213: -6067730183998806489
+    second: test_spritesheet_7
+  - first:
+      213: 6205633510649424323
+    second: test_spritesheet_8
+  - first:
+      213: 8541112731238597586
+    second: test_spritesheet_9
+  - first:
+      213: 2486382891706146608
+    second: test_spritesheet_10
+  - first:
+      213: -9215119313757088477
+    second: test_spritesheet_11
+  - first:
+      213: 6175604511772447943
+    second: checkpoint
+  - first:
+      213: 6392118597280732598
+    second: button_idle
+  - first:
+      213: -1645282654968554533
+    second: button_pressed
+  - first:
+      213: -2898732606498022353
+    second: test_spritesheet_15
+  - first:
+      213: -3454072704957669851
+    second: test_spritesheet_16
+  - first:
+      213: -3117723404672730949
+    second: test_spritesheet_17
+  - first:
+      213: -5185665931224143077
+    second: test_spritesheet_18
+  - first:
+      213: 4720985433895100394
+    second: test_spritesheet_19
+  - first:
+      213: 3394178971320970234
+    second: test_spritesheet_20
+  - first:
+      213: 8509755114426663675
+    second: test_spritesheet_21
+  - first:
+      213: 7687028962200434956
+    second: test_spritesheet_22
+  - first:
+      213: -5188980818732933102
+    second: test_spritesheet_23
+  - first:
+      213: -6113123084671770631
+    second: test_spritesheet_24
+  - first:
+      213: -4067984189239514280
+    second: test_spritesheet_25
+  - first:
+      213: 703441554948416557
+    second: test_spritesheet_26
+  - first:
+      213: 7527392500989040439
+    second: test_spritesheet_27
+  - first:
+      213: -5897839775893308655
+    second: test_spritesheet_28
+  - first:
+      213: 8323890980230709689
+    second: test_spritesheet_29
+  - first:
+      213: -2129197379270194505
+    second: test_spritesheet_30
+  - first:
+      213: 7444327624353887604
+    second: test_spritesheet_31
+  - first:
+      213: -1505044881707134799
+    second: test_spritesheet_32
+  - first:
+      213: 9089215070150224932
+    second: test_spritesheet_33
+  - first:
+      213: -4421354128654914507
+    second: test_spritesheet_34
+  - first:
+      213: -8872040464667145520
+    second: test_spritesheet_35
+  - first:
+      213: -696712587942743315
+    second: test_spritesheet_36
+  - first:
+      213: 4000623084233886146
+    second: test_spritesheet_37
+  - first:
+      213: -6691870382055430595
+    second: test_spritesheet_38
+  - first:
+      213: 6993515790491341800
+    second: test_spritesheet_39
+  - first:
+      213: 1075079624649250309
+    second: test_spritesheet_40
+  - first:
+      213: 5311425562343736023
+    second: test_spritesheet_41
+  - first:
+      213: 5631947477554722155
+    second: test_spritesheet_42
+  - first:
+      213: 2812820480571800507
+    second: test_spritesheet_43
+  - first:
+      213: -5379328140240886754
+    second: test_spritesheet_44
+  - first:
+      213: -7909552811140364551
+    second: test_spritesheet_45
+  - first:
+      213: -4441074315174488352
+    second: test_spritesheet_46
+  - first:
+      213: 7036175965884722026
+    second: test_spritesheet_47
+  - first:
+      213: -1792645077956358484
+    second: test_spritesheet_48
+  - first:
+      213: 3888812924323209950
+    second: test_spritesheet_49
+  - first:
+      213: -4731846656789476874
+    second: test_spritesheet_50
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -115,15 +256,15 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: test_spritesheet_0
+      name: player
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 97
-        height: 96
+        x: 13
+        y: 179
+        width: 70
+        height: 71
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -136,15 +277,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: test_spritesheet_1
+      name: platform_full
       rect:
         serializedVersion: 2
-        x: 119
-        y: 0
-        width: 97
+        x: 155
+        y: 179
+        width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -157,15 +298,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: test_spritesheet_2
+      name: platform_half
       rect:
         serializedVersion: 2
-        x: 236
-        y: 0
-        width: 98
-        height: 96
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 301
+        y: 179
+        width: 96
+        height: 48
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -178,15 +319,15 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: test_spritesheet_3
+      name: acid_wave
       rect:
         serializedVersion: 2
-        x: 350
-        y: 0
-        width: 97
+        x: 455
+        y: 179
+        width: 96
         height: 96
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -194,6 +335,132 @@ TextureImporter:
       bones: []
       spriteID: 302fe4481a1677af0800000000000000
       internalID: -398742695661604349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: collectible
+      rect:
+        serializedVersion: 2
+        x: 610
+        y: 179
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f40a387a476df8340800000000000000
+      internalID: 4868345518725767247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: start
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98aeeb9a9bdda5d90800000000000000
+      internalID: -7108125272364356983
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: end
+      rect:
+        serializedVersion: 2
+        x: 156
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c94086aec60bc5020800000000000000
+      internalID: 2331932688906716316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: checkpoint
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c41f7d659724b550800000000000000
+      internalID: 6175604511772447943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_idle
+      rect:
+        serializedVersion: 2
+        x: 465
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b516115ffd55b850800000000000000
+      internalID: 6392118597280732598
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: button_pressed
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 0
+        width: 96
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdbdc737428ca29e0800000000000000
+      internalID: -1645282654968554533
       vertices: []
       indices: 
       edges: []
